@@ -5,16 +5,16 @@
 #include <iostream>
 using namespace std;
 
-//Vehicle class holds the general data 'bout the ride.
+//Element class
 class Element
 {
 private:
-	string symbol;
-	char type;
-	int numIsotopes;
+	string symbol; //For element symbol
+	char type; //For element type
+	int numIsotopes; //For number of isotopes
 	
 public:
-	//Default constructor
+	//Default constructor, initializing
 	Element()
 	{
 		symbol = "";
@@ -22,7 +22,7 @@ public:
 		numIsotopes = 0;
 	}
 
-	//Constructor
+	//Constructor to set variables
 	void setElement(string ELsymbol, char ELType, int ELnumIsotopes)
 	{
 		symbol = ELsymbol;
@@ -37,7 +37,22 @@ public:
 	{
 		cout << "\n\nHere is the element information: \n";
 		cout << "Symbol: " << symbol << endl;
-		cout << "Type: " << type << endl;
+
+		if (type == 'M' || type == 'm')
+		{
+			cout << "Type: Metal" << endl;
+		}
+
+		if (type == 'G' || type == 'g')
+		{
+			cout << "Type: Gas" << endl;
+		}
+
+		if (type == 'N' || type == 'n')
+		{
+			cout << "Type: Non-Metal" << endl;
+		}
+		
 		cout << "Number of isotopes: " << numIsotopes << endl;
 	}
 
@@ -56,6 +71,5 @@ public:
 	{
 		return numIsotopes;
 	}
-
 };
 #endif

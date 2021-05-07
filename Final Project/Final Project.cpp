@@ -18,7 +18,7 @@ void getInputCalcAtomWht(Isotopes);
 
 int main() 
 {
-	char choice = {}; //To hold users continue choice
+	char choice = {'Y'}; //To hold users continue choice
 	Isotopes set; //Isotopes class type variable
 
 	//Intro
@@ -32,7 +32,13 @@ int main()
 
 	cout << "This program will calculate the atomic weight of an element on the periodic table using the % abundance and mass of the isotope for elements containing between 2 and 3 naturally occuring isotopes.\n\n";
 
-	getInputCalcAtomWht(set);
+	//Do/While function to allow the user to repeat calculations
+	do
+	{
+		getInputCalcAtomWht(set);
+		cout << "\n\nDo you want to calculate another atomic weight? (Y/N): ";
+			cin >> choice;
+	} while (choice == 'Y' || choice == 'y');
 
 	cout << endl << endl;
 	system("pause");
@@ -41,10 +47,11 @@ int main()
 
 void getInputCalcAtomWht(Isotopes set)
 {
-	string ELsymbol;
-	char ELtype;
+	string ELsymbol; //to hold element symbol
+	char ELtype; //to hold element type
 	int numIsotopes; //must be either 2 or 3 for this program
 
+	//Variables to hold isotope info
 	float isotopicMass1par;
 	float naturalAbundance1par;
 	float isotopicMass2par;
@@ -52,8 +59,9 @@ void getInputCalcAtomWht(Isotopes set)
 	float isotopicMass3par;
 	float naturalAbundance3par;
 
-	float atomicWeightparameter = 0.0;
+	float atomicWeightparameter = 0.0; //to hold atomic weight
 
+	//Get info from user
 	cout << "\n\nEnter the element's symbol: ";
 	cin >> ELsymbol;
 	cout << endl;
@@ -105,6 +113,7 @@ void getInputCalcAtomWht(Isotopes set)
 		naturalAbundance3par = 0.0;
 	}
 
+	//Calculate atomic weight
 	atomicWeightparameter = (((naturalAbundance1par) / 100) * isotopicMass1par) + (((naturalAbundance2par) / 100) * (isotopicMass2par));
 
 	if (numIsotopes == 3)
@@ -112,6 +121,7 @@ void getInputCalcAtomWht(Isotopes set)
 		atomicWeightparameter = atomicWeightparameter + (((naturalAbundance3par) / 100) * isotopicMass3par);
 	}
 
+	//Call set functions
 	set.setElement(ELsymbol, ELtype, numIsotopes);
 
 	set.setIsotopes(numIsotopes, isotopicMass1par, naturalAbundance1par, isotopicMass2par, naturalAbundance2par, isotopicMass3par, naturalAbundance3par);

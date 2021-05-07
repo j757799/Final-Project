@@ -6,6 +6,7 @@
 #include<iostream>
 using namespace std;
 
+//Isotope class holds isotope information
 class Isotopes : public Element
 {
 private:
@@ -20,7 +21,7 @@ private:
 	float atomicWeight;
 
 public:
-	//Default constructor
+	//Default constructor, initializing
 	Isotopes() : Element()
 	{
 		isotopicMass1 = 0.0;
@@ -30,9 +31,10 @@ public:
 		isotopicMass3 = 0.0;
 		naturalAbundance3 = 0.0;
 		atomicWeight = 0.0;
+		numIsotopes = 0;
 	}
 
-	//Constructor #2
+	//Constructor sets isotope variables
 	void setIsotopes(int numIsotopepar, float isotopicMass1par, float naturalAbundance1par, float isotopicMass2par, float naturalAbundance2par, float isotopicMass3par, float naturalAbundance3par)
 	{
 		numIsotopes = numIsotopepar;
@@ -46,38 +48,43 @@ public:
 		displayIsotopes();
 	}
 
-	float getNatAbund1()
-	{
-		return naturalAbundance1;
-	}
-
+	//Set function for atomic weight
 	void setAtomicWeight(float atomicWeightpar)
 	{
 		atomicWeight = atomicWeightpar;
 		displayAtomicWeight();
 	}
 
+	//Display function
 	void displayIsotopes()
 	{
 		cout << fixed << showpoint << setprecision(4);
-		cout << "\n\ndisplay Isotopes:\n\n";
+		cout << "\n\ndisplay Isotopes:\n";
+		cout << "-----------------\n";
 		cout << "Mass of isotope 1: " << isotopicMass1 << endl;
-		cout << "Natural abundance of isotope 1: " << naturalAbundance1 << endl;
-		cout << "Mass of isotope 2: " << isotopicMass2 << endl;
-		cout << "Natural abundance of isotope 2: " << naturalAbundance2 << endl;
+		cout << "\nNatural abundance of isotope 1: " << naturalAbundance1 << endl;
+		cout << "\nMass of isotope 2: " << isotopicMass2 << endl;
+		cout << "\nNatural abundance of isotope 2: " << naturalAbundance2 << endl;
 
 		if (numIsotopes == 3)
 		{
-			cout << "Mass of isotope 3: "<< isotopicMass3 << endl;
-			cout << "Natural abundance of isotope 3: " << naturalAbundance3 << endl;
+			cout << "\nMass of isotope 3: "<< isotopicMass3 << endl;
+			cout << "\nNatural abundance of isotope 3: " << naturalAbundance3 << endl;
 		}
-
-		displayAtomicWeight();
 	}
-
+	
+	//Display atomic weight
 	void displayAtomicWeight()
 	{
+		cout << "\n\nDisplay atomic weight: \n";
+		cout << "----------------------\n";
 		cout << "\nAtomic Weight: " << atomicWeight << endl;
+	}
+
+	//Get functions
+	float getNatAbund1()
+	{
+		return naturalAbundance1;
 	}
 
 	float getIsoMass1()
