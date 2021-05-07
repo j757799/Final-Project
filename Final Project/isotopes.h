@@ -70,6 +70,8 @@ public:
 		cout << naturalAbundance2 << endl;
 		cout << isotopicMass3 << endl;
 		cout << naturalAbundance3 << endl;
+
+		displayAtomicWeight();
 	}
 
 	void displayAtomicWeight()
