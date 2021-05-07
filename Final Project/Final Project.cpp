@@ -14,8 +14,7 @@
 using namespace std;
 
 //Function prototypes
-void getInput(Isotopes);
-//void calAtomicWeight(Isotopes);
+void getInputCalcAtomWht(Isotopes);
 
 int main() 
 {
@@ -33,16 +32,14 @@ int main()
 
 	cout << "This program will calculate the atomic weight of an element on the periodic table using the % abundance and mass of the isotope for elements containing between 2 and 3 naturally occuring isotopes.\n\n";
 
-	getInput(set);
-
-	/*calAtomicWeight(set);*/
+	getInputCalcAtomWht(set);
 
 	cout << endl << endl;
 	system("pause");
 	return 0;
 }
 
-void getInput(Isotopes set)
+void getInputCalcAtomWht(Isotopes set)
 {
 	string ELsymbol;
 	char ELtype;
@@ -54,6 +51,8 @@ void getInput(Isotopes set)
 	float naturalAbundance2par;
 	float isotopicMass3par;
 	float naturalAbundance3par;
+
+	float atomicWeightparameter = 0.0;
 
 	cout << "\n\nEnter the element's symbol: ";
 	cin >> ELsymbol;
@@ -106,10 +105,6 @@ void getInput(Isotopes set)
 		naturalAbundance3par = 0.0;
 	}
 
-	float atomicWeightparameter = 0.0;
-
-	/*cout << "\n\ngetabundance1: " << set.getNatAbund1() << endl;*/
-
 	atomicWeightparameter = (((naturalAbundance1par) / 100) * isotopicMass1par) + (((naturalAbundance2par) / 100) * (isotopicMass2par));
 
 	if (numIsotopes == 3)
@@ -117,27 +112,9 @@ void getInput(Isotopes set)
 		atomicWeightparameter = atomicWeightparameter + (((naturalAbundance3par) / 100) * isotopicMass3par);
 	}
 
-	cout << "\n\nBefore sending atomic weight: " << atomicWeightparameter << endl;
-	set.setAtomicWeight(atomicWeightparameter);
 	set.setElement(ELsymbol, ELtype, numIsotopes);
 
-	set.setIsotopes(isotopicMass1par, naturalAbundance1par, isotopicMass2par, naturalAbundance2par, isotopicMass3par, naturalAbundance3par);
+	set.setIsotopes(numIsotopes, isotopicMass1par, naturalAbundance1par, isotopicMass2par, naturalAbundance2par, isotopicMass3par, naturalAbundance3par);
 
+	set.setAtomicWeight(atomicWeightparameter);
 }
-
-//void calAtomicWeight(Isotopes set)
-//{
-//	float atomicWeightparameter = 0.0;
-//
-//	cout << "\n\ngetabundance1: " << set.getNatAbund1() << endl;
-//
-//	atomicWeightparameter = (((set.getNatAbund1())/100) * (set.getIsoMass1())) + (((set.getNatAbund2()) / 100) * (set.getIsoMass2()));
-//
-//	if (set.getNumIsotopes() == 3)
-//	{
-//		atomicWeightparameter = atomicWeightparameter + (((set.getNatAbund3()) / 100) * (set.getIsoMass3()));
-//	}
-//
-//	cout << "\n\nBefore sending atomic weight: " << atomicWeightparameter << endl;
-//	set.setAtomicWeight(atomicWeightparameter);
-//}

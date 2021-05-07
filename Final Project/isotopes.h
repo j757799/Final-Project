@@ -10,6 +10,7 @@ class Isotopes : public Element
 {
 private:
 	//These variables hold the masses of the isotopes and their percent of natural abundance
+	int numIsotopes;
 	float isotopicMass1;
 	float naturalAbundance1;
 	float isotopicMass2;
@@ -32,9 +33,9 @@ public:
 	}
 
 	//Constructor #2
-	void setIsotopes(float isotopicMass1par, float naturalAbundance1par, float isotopicMass2par, float naturalAbundance2par, float isotopicMass3par, float naturalAbundance3par)
+	void setIsotopes(int numIsotopepar, float isotopicMass1par, float naturalAbundance1par, float isotopicMass2par, float naturalAbundance2par, float isotopicMass3par, float naturalAbundance3par)
 	{
-		cout << "\n\nIn setIsotopes: " << naturalAbundance1par;
+		numIsotopes = numIsotopepar;
 		isotopicMass1 = isotopicMass1par;
 		naturalAbundance1 = naturalAbundance1par;
 		isotopicMass2 = isotopicMass2par;
@@ -42,20 +43,16 @@ public:
 		isotopicMass3 = isotopicMass3par;
 		naturalAbundance3 = naturalAbundance3par;
 
-		cout << "\n\nAlso in setIsotopes: " << naturalAbundance1 << endl;
-		
 		displayIsotopes();
 	}
 
 	float getNatAbund1()
 	{
-		cout << "\n\nIn getNatAbund1: " << naturalAbundance1;
 		return naturalAbundance1;
 	}
-	//Overloaded
+
 	void setAtomicWeight(float atomicWeightpar)
 	{
-		cout << "\n\nIn setAtomicWeight: " << atomicWeightpar << endl << endl;
 		atomicWeight = atomicWeightpar;
 		displayAtomicWeight();
 	}
@@ -63,23 +60,25 @@ public:
 	void displayIsotopes()
 	{
 		cout << fixed << showpoint << setprecision(4);
-		cout << "\n\ndisplay Isotopes: \n";
-		cout << isotopicMass1 << endl;
-		cout << naturalAbundance1 << endl;
-		cout << isotopicMass2 << endl;
-		cout << naturalAbundance2 << endl;
-		cout << isotopicMass3 << endl;
-		cout << naturalAbundance3 << endl;
+		cout << "\n\ndisplay Isotopes:\n\n";
+		cout << "Mass of isotope 1: " << isotopicMass1 << endl;
+		cout << "Natural abundance of isotope 1: " << naturalAbundance1 << endl;
+		cout << "Mass of isotope 2: " << isotopicMass2 << endl;
+		cout << "Natural abundance of isotope 2: " << naturalAbundance2 << endl;
+
+		if (numIsotopes == 3)
+		{
+			cout << "Mass of isotope 3: "<< isotopicMass3 << endl;
+			cout << "Natural abundance of isotope 3: " << naturalAbundance3 << endl;
+		}
 
 		displayAtomicWeight();
 	}
 
 	void displayAtomicWeight()
 	{
-		cout << "Atomic Weight " << atomicWeight << endl;
+		cout << "\nAtomic Weight: " << atomicWeight << endl;
 	}
-
-	
 
 	float getIsoMass1()
 	{
@@ -112,5 +111,4 @@ public:
 		return atomicWeight;
 	}
 };
-
 #endif
