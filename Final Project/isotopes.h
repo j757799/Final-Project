@@ -55,7 +55,7 @@ public:
 	//Overloaded
 	void setAtomicWeight(float atomicWeightpar)
 	{
-		cout << "\n\nIn setAtomicWeight: " << atomicWeightpar << endl;
+		cout << "\n\nIn setAtomicWeight: " << atomicWeightpar << endl << endl;
 		atomicWeight = atomicWeightpar;
 		displayAtomicWeight();
 	}
@@ -79,33 +79,33 @@ public:
 
 	
 
-	float getIsoMass1() const
+	float getIsoMass1()
 	{
 		return isotopicMass1;
 	}
 
-	float getNatAbund2() const
+	float getNatAbund2()
 	{
 		return naturalAbundance2;
 	}
 
-	float getIsoMass2() const
+	float getIsoMass2()
 	{
 		return isotopicMass2;
 	}
 
-	float getNatAbund3() const
+	float getNatAbund3()
 	{
 		return naturalAbundance3;
 	}
 
-	float getIsoMass3() const
+	float getIsoMass3()
 	{
 		return isotopicMass3;
 	}
 
 	//Accessor for atomic weight
-	float getAtomicWeight() const
+	float getAtomicWeight()
 	{
 		return atomicWeight;
 	}
